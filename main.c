@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-int count_bits(unsigned char c) {
-  int num_bits = 0;
+unsigned count_bits(unsigned char c) {
+  unsigned num_bits = 0;
   while(c > 0) {
     num_bits += c & 1 ? 1 : 0;
     c >>= 1;
