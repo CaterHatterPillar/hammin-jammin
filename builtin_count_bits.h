@@ -1,23 +1,25 @@
 #ifndef BUILTIN_COUNT_BITS_H
 #define BUILTIN_COUNT_BITS_H
 
-unsigned builtin_count_bits_char(unsigned char c) {
+#include <stdint.h>
+
+unsigned builtin_count_bits_char(uint8_t c) {
   return __builtin_popcount(c);
 }
 
-unsigned builtin_count_bits_short(unsigned short s) {
+unsigned builtin_count_bits_short(uint16_t s) {
   return __builtin_popcount(s);
 }
 
-unsigned builtin_count_bits_int(unsigned int i) {
+unsigned builtin_count_bits_int(uint16_t i) {
   return __builtin_popcount(i);
 }
 
-unsigned builtin_count_bits_long(unsigned long l) {
+unsigned builtin_count_bits_long(uint32_t l) {
   return __builtin_popcountl(l);
 }
 
-unsigned builtin_count_bits_long_long(unsigned long long ll) {
+unsigned builtin_count_bits_long_long(uint64_t ll) {
   return __builtin_popcountll(ll);
 }
 

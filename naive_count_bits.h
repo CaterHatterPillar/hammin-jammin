@@ -1,7 +1,9 @@
 #ifndef NAIVE_COUNT_BITS_H
 #define NAIVE_COUNT_BITS_H
 
-unsigned naive_count_char(unsigned char c) {
+#include <stdint.h>
+
+unsigned naive_count_char(uint8_t c) {
   unsigned num_bits = 0;
   while(c) {
     num_bits += c & 1 ? 1 : 0;
@@ -10,19 +12,19 @@ unsigned naive_count_char(unsigned char c) {
   return num_bits;
 }
 
-unsigned naive_count_short(unsigned short s) {
+unsigned naive_count_short(uint16_t s) {
   return naive_count_char(s >> 8) + naive_count_char(s);
 }
 
-unsigned naive_count_int(unsigned int i) {
+unsigned naive_count_int(uint16_t i) {
   return naive_count_short(i);
 }
 
-unsigned naive_count_long(unsigned long l) {
+unsigned naive_count_long(uint32_t l) {
   return naive_count_short(l >> 16) + naive_count_short(l);
 }
 
-unsigned naive_count_long_long(unsigned long long ll) {
+unsigned naive_count_long_long(uint64_t ll) {
   return naive_count_long(ll >> 32) + naive_count_long(ll);
 }
 

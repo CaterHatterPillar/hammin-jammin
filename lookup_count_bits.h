@@ -1,34 +1,36 @@
 #ifndef LOOKUP_COUNT_BITS_H
 #define LOOKUP_COUNT_BITS_H
 
+#include <stdint.h>
+
 // http://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetNaive
-static const unsigned char lookup_bit_count[256] = {
+static const unsigned lookup_bit_count[256] = {
 #   define B2(n) n,     n+1,     n+1,     n+2
 #   define B4(n) B2(n), B2(n+1), B2(n+1), B2(n+2)
 #   define B6(n) B4(n), B4(n+1), B4(n+1), B4(n+2)
     B6(0), B6(1), B6(1), B6(2)
 };
 
-unsigned lookup_count_bits_char(unsigned char c) {
+unsigned lookup_count_bits_char(uint8_t c) {
   return lookup_bit_count[c];
 }
 
-unsigned lookup_count_bits_short(unsigned short s) {
+unsigned lookup_count_bits_short(uint16_t s) {
   return lookup_bit_count[s >> 8] + lookup_bit_count[s];
 }
 
-unsigned lookup_count_bits_int(unsigned int i) {
+unsigned lookup_count_bits_int(uint16_t i) {
   return lookup_count_bits_short(i);
 }
 
-unsigned lookup_count_bits_long(unsigned long l) {
+unsigned lookup_count_bits_long(uint32_t l) {
   return lookup_bit_count[l & 0xFF]
     + lookup_bit_count[(l >> 8) & 0xFF]
     + lookup_bit_count[(l >> 16) & 0xFF]
     + lookup_bit_count[(l >> 24) & 0xFF];
 }
 
-unsigned lookup_count_bits_long_long(unsigned long long ll) {
+unsigned lookup_count_bits_long_long(uint64_t ll) {
   return lookup_count_bits_long(ll >> 32) + lookup_count_bits_long(ll);
 }
 
