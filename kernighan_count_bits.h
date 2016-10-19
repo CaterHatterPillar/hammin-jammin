@@ -5,26 +5,26 @@
 
 unsigned kernighan_count_bits_char(uint8_t c) {
   unsigned num_bits = 0;
-  for(; c; c & (c - 1)) {
+  for(; c; c = c & (c - 1)) {
     ++num_bits;
   }
   return num_bits;
 }
 
 unsigned kernighan_count_bits_short(uint16_t s) {
-  return kernighan_count_char(s >> 8) + kernighan_count_char(s);
+  return kernighan_count_bits_char(s >> 8) + kernighan_count_bits_char(s);
 }
 
 unsigned kernighan_count_bits_int(uint16_t i) {
-  return kernighan_count_short(i);
+  return kernighan_count_bits_short(i);
 }
 
 unsigned kernighan_count_bits_long(uint32_t l) {
-  return kernighan_count_short(l >> 16) + kernighan_count_short(l);
+  return kernighan_count_bits_short(l >> 16) + kernighan_count_bits_short(l);
 }
 
 unsigned kernighan_count_bits_long_long(uint64_t ll) {
-  return kernighan_count_long(ll >> 32) + kernighan_count_long(ll);
+  return kernighan_count_bits_long(ll >> 32) + kernighan_count_bits_long(ll);
 }
 
 void test_kernighan_count_bits() {
