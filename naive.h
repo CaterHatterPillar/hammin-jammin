@@ -3,13 +3,17 @@
 
 #include <stdint.h>
 
+#define NAIVE(x)               \
+  uint8_t num_bits = 0;        \
+  while(x) {                   \
+    num_bits += x & 1 ? 1 : 0; \
+    x >>= 1;                   \
+  }                            \
+  return num_bits
+  
+
 uint8_t naive_8(uint8_t c) {
-  uint8_t num_bits = 0;
-  while(c) {
-    num_bits += c & 1 ? 1 : 0;
-    c >>= 1;
-  }
-  return num_bits;
+  NAIVE(c);
 }
 
 uint8_t naive_16(uint16_t s) {
@@ -21,7 +25,7 @@ uint8_t naive_32(uint32_t l) {
 }
 
 uint8_t naive_64(uint64_t ll) {
-  return naive_32(ll >> 32) + naive_32(ll);
+  NAIVE(ll);
 }
 
 void test_naive() {
