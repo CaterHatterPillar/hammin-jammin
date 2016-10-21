@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-unsigned naive_8(uint8_t c) {
-  unsigned num_bits = 0;
+uint8_t naive_8(uint8_t c) {
+  uint8_t num_bits = 0;
   while(c) {
     num_bits += c & 1 ? 1 : 0;
     c >>= 1;
@@ -12,15 +12,15 @@ unsigned naive_8(uint8_t c) {
   return num_bits;
 }
 
-unsigned naive_16(uint16_t s) {
+uint8_t naive_16(uint16_t s) {
   return naive_8(s >> 8) + naive_8(s);
 }
 
-unsigned naive_32(uint32_t l) {
+uint8_t naive_32(uint32_t l) {
   return naive_16(l >> 16) + naive_16(l);
 }
 
-unsigned naive_64(uint64_t ll) {
+uint8_t naive_64(uint64_t ll) {
   return naive_32(ll >> 32) + naive_32(ll);
 }
 

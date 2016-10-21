@@ -3,21 +3,21 @@
 
 #include <stdint.h>
 
-unsigned popcnt_64(uint64_t);
+uint8_t popcnt_64(uint64_t);
 
-unsigned popcnt_8(uint8_t c) {
+uint8_t popcnt_8(uint8_t c) {
   return popcnt_64(c);
 }
 
-unsigned popcnt_16(uint16_t s) {
+uint8_t popcnt_16(uint16_t s) {
   return popcnt_64(s);
 }
 
-unsigned popcnt_32(uint32_t l) {
+uint8_t popcnt_32(uint32_t l) {
   return popcnt_64(l);
 }
 
-unsigned popcnt_64(uint64_t ll) {
+uint8_t popcnt_64(uint64_t ll) {
   uint64_t num_bits = 0;
   __asm__ ("POPCNT %1, %0"
            : "=r"(num_bits)

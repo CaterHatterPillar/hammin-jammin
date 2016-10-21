@@ -3,23 +3,23 @@
 
 #include <stdint.h>
 
-unsigned kernighan_8(uint8_t c) {
-  unsigned num_bits = 0;
+uint8_t kernighan_8(uint8_t c) {
+  uint8_t num_bits = 0;
   for(; c; c = c & (c - 1)) {
     ++num_bits;
   }
   return num_bits;
 }
 
-unsigned kernighan_16(uint16_t s) {
+uint8_t kernighan_16(uint16_t s) {
   return kernighan_8(s >> 8) + kernighan_8(s);
 }
 
-unsigned kernighan_32(uint32_t l) {
+uint8_t kernighan_32(uint32_t l) {
   return kernighan_16(l >> 16) + kernighan_16(l);
 }
 
-unsigned kernighan_64(uint64_t ll) {
+uint8_t kernighan_64(uint64_t ll) {
   return kernighan_32(ll >> 32) + kernighan_32(ll);
 }
 
