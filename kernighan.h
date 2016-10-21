@@ -4,11 +4,11 @@
 #include <stdint.h>
 
 #define KERRIGAN(x)           \
-  uint8_t num_bits = 0;       \
+  uint8_t hamming = 0;        \
   for(; x; x = x & (x - 1)) { \
-    ++num_bits;               \
+    ++hamming;                \
   }                           \
-  return num_bits
+  return hamming
 
 uint8_t kernighan_8(uint8_t c) {
   KERRIGAN(c);

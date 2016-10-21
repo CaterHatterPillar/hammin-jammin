@@ -4,12 +4,12 @@
 #include <stdint.h>
 
 #define NAIVE(x)               \
-  uint8_t num_bits = 0;        \
+  uint8_t hamming = 0;         \
   while(x) {                   \
-    num_bits += x & 1 ? 1 : 0; \
+    hamming += x & 1 ? 1 : 0;  \
     x >>= 1;                   \
   }                            \
-  return num_bits
+  return hamming
   
 
 uint8_t naive_8(uint8_t c) {

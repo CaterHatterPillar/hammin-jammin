@@ -1,7 +1,7 @@
-all: main
+all: hamming
 
-main: $(OBJS)
-	gcc -o main main.c
+hamming: $(OBJS)
+	gcc -o hamming hamming.c
 
 clean:
-	rm -f main
+	rm -f hamming

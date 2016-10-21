@@ -18,11 +18,11 @@ uint8_t popcnt_32(uint32_t l) {
 }
 
 uint8_t popcnt_64(uint64_t ll) {
-  uint64_t num_bits = 0;
+  uint64_t hamming = 0;
   __asm__ ("POPCNT %1, %0"
-           : "=r"(num_bits)
+           : "=r"(hamming)
            : "r"(ll));
-  return num_bits;
+  return hamming;
 }
 
 void test_popcnt() {
