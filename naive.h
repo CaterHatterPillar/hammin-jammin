@@ -28,14 +28,4 @@ uint8_t naive_64(uint64_t ll) {
   NAIVE(ll);
 }
 
-void test_naive() {
-  assert(naive_8(0b10101010) == 4);
-  assert(naive_8(0b11111111) == 8);
-  assert(naive_8(0) == 0);
-  
-  assert(naive_16(0x00FF) == 8);
-  assert(naive_32(0x0F0F0F0F) == 16);
-  assert(naive_64(0xFFFFFFFF00000000) == 32);
-}
-
 #endif  // NAIVE_H

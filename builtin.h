@@ -19,14 +19,4 @@ uint8_t builtin_64(uint64_t ll) {
   return __builtin_popcountll(ll);
 }
 
-void test_builtin() {
-  assert(builtin_8(0b10101010) == 4);
-  assert(builtin_8(0b11111111) == 8);
-  assert(builtin_8(0) == 0);
-  
-  assert(builtin_16(0x00FF) == 8);
-  assert(builtin_32(0x0F0F0F0F) == 16);
-  assert(builtin_64(0xFFFFFFFF00000000) == 32);
-}
-
 #endif  // BUILTIN_H

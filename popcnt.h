@@ -25,14 +25,4 @@ uint8_t popcnt_64(uint64_t ll) {
   return hamming;
 }
 
-void test_popcnt() {
-  assert(popcnt_8(0b10101010) == 4);
-  assert(popcnt_8(0b11111111) == 8);
-  assert(popcnt_8(0) == 0);
-  
-  assert(popcnt_16(0x00FF) == 8);
-  assert(popcnt_32(0x0F0F0F0F) == 16);
-  assert(popcnt_64(0xFFFFFFFF00000000) == 32);
-}
-
 #endif  // POPCNT_H

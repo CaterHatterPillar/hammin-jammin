@@ -26,14 +26,4 @@ uint8_t kernighan_64(uint64_t ll) {
   KERRIGAN(ll);
 }
 
-void test_kernighan() {
-  assert(kernighan_8(0b10101010) == 4);
-  assert(kernighan_8(0b11111111) == 8);
-  assert(kernighan_8(0) == 0);
-  
-  assert(kernighan_16(0x00FF) == 8);
-  assert(kernighan_32(0x0F0F0F0F) == 16);
-  assert(kernighan_64(0xFFFFFFFF00000000) == 32);
-}
-
 #endif  // KERNIGHAN_H

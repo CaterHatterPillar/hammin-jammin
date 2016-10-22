@@ -30,14 +30,4 @@ uint8_t lookup_64(uint64_t ll) {
   return lookup_32(ll >> 32) + lookup_32(ll);
 }
 
-void test_lookup() {
-  assert(lookup_8(0b10101010) == 4);
-  assert(lookup_8(0b11111111) == 8);
-  assert(lookup_8(0) == 0);
-  
-  assert(lookup_16(0x00FF) == 8);
-  assert(lookup_32(0x0F0F0F0F) == 16);
-  assert(lookup_64(0xFFFFFFFF00000000) == 32);
-}
-
 #endif  // LOOKUP_H
