@@ -2,6 +2,7 @@
 #include <sys/time.h>
 
 #include "builtin.h"
+#include "fixed.h"
 #include "kernighan.h"
 #include "lookup.h"
 #include "naive.h"
@@ -48,10 +49,11 @@ void profile_hamming(uint8_t (*hamming)(uint64_t), const char *desc) {
          desc, up_to, total_hamming, elapsed);
 }
 
-#define NUM_HAMMINGS 5
+#define NUM_HAMMINGS 6
 int main(int argc, char* argv[]) {
   uint8_t (*hammings[NUM_HAMMINGS])(uint64_t) = {
     builtin_64,
+    fixed_64,
     kernighan_64,
     lookup_64,
     naive_64,
@@ -60,6 +62,7 @@ int main(int argc, char* argv[]) {
 
   const char *descs[NUM_HAMMINGS] = {
     "Builtin",
+    "Fixed",
     "Kernighan",
     "Lookup",
     "Naive",
